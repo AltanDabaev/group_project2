@@ -1,11 +1,13 @@
 package core;
 
 import io.cucumber.java.Scenario;
+
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebDriver;
 import pages.*;
 import utils.BrowserUtils;
+import utils.ApiUtils;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,10 +1,10 @@
 package utils;
 
+import core.TestContext;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import io.techleadacademy.core.TestContext;
-import io.techleadacademy.pojo.Submission;
+
 
 import java.util.HashMap;
 import java.util.List;
