@@ -8,6 +8,7 @@ import pages.*;
 import utils.BrowserUtils;
 import java.util.HashMap;
 import java.util.Map;
+import utils.ApiUtils;
 
 public class TestContext {
 
