@@ -7,17 +7,7 @@ import java.util.Properties;
 
 public class ConfigReader {
     public static String readProperty(String property) {
-        return switch (property) {
-            case "username-student" ->
-                    System.getenv("STUDENT_USR") != null ? System.getenv("STUDENT_USR") : new ConfigReader().getPropertyFromFile(property);
-            case "password-student" ->
-                    System.getenv("STUDENT_PSW") != null ? System.getenv("STUDENT_PSW") : new ConfigReader().getPropertyFromFile(property);
-            case "username-admin" ->
-                    System.getenv("ADMIN_USR") != null ? System.getenv("ADMIN_USR") : new ConfigReader().getPropertyFromFile(property);
-            case "password-admin" ->
-                    System.getenv("ADMIN_PSW") != null ? System.getenv("ADMIN_PSW") : new ConfigReader().getPropertyFromFile(property);
-            default -> new ConfigReader().getPropertyFromFile(property);
-        };
+       return new ConfigReader().getPropertyFromFile(property);
     }
 
     private String getPropertyFromFile(String property) {
