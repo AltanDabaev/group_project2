@@ -3,8 +3,11 @@ package utils;
 import core.TestContext;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import pojo.Account;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ApiUtils {
@@ -38,5 +41,21 @@ public class ApiUtils {
                 .getString("access_token");
     }
 
+    public List<Account> getAllAccounts() {
+        testContext.API().requestSpecification.basePath("/services/data" +
+                "/v61.0/sobjects/Account");
+        testContext.API().response = testContext.API().requestSpecification
+                .get();
+        JsonPath jsonPath = testContext.API().response.jsonPath();
+        return jsonPath.getList("recentItems", Account.class);
+    }
 
+    public Account getAccountById(String Id) {
+        testContext.API().requestSpecification.basePath("/services/data" +
+                "/v61.0/sobjects/Account/" + Id);
+        testContext.API().response = testContext.API().requestSpecification
+                .get();
+        JsonPath jsonPath = testContext.API().response.jsonPath();
+        return jsonPath.getObject("", Account.class);
+    }
 }
