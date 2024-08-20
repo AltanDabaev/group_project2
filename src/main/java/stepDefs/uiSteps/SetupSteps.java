@@ -22,6 +22,9 @@ public class SetupSteps {
                 testContext.UI().getSetupPage().serviceLaunchBtn.click();
                 testContext.UI().getBrowserUtils().Waits.waitForURLToContainText("page/home");
                 break;
+            case "accounts":
+                testContext.UI().getHomePage().accountsNavBtn.click();
+                break;
             default: Assert.fail();
         }
     }

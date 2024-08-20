@@ -6,7 +6,7 @@ Feature: Home page Tests
     And I click "Service" button
 
 
-  @US108
+  @US103
   Scenario: Home page should have following nav buttons
     Then Verify "Accounts" navigation button is visible
     Then Verify "Contacts" navigation button is visible
