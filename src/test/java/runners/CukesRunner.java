@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber-reports/cucumber.json"
         },
         features = "src/test/resources/features",
-        glue = "core.stepDefs",
+        glue = "stepDefs",
         stepNotifications = true,
         tags = "",
         dryRun = false
