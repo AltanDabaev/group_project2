@@ -51,7 +51,7 @@ public class Driver {
         sauceOptions.put("accessKey", ConfigReader.readProperty("SAUCE_ACCESS_KEY"));
 
         //Update this to see if your test was ran in SauceLabs
-        sauceOptions.put("name", "Scenario execution - Test");
+        sauceOptions.put("name", "Scenario execution - US-6");
 
         options.setCapability("sauce:options", sauceOptions);
 

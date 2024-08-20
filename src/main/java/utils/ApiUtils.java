@@ -5,6 +5,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import pojo.Account;
+import pojo.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,5 +58,23 @@ public class ApiUtils {
                 .get();
         JsonPath jsonPath = testContext.API().response.jsonPath();
         return jsonPath.getObject("", Account.class);
+    }
+
+    public List<User> getAllUsers() {
+        testContext.API().requestSpecification.basePath("/services/data" +
+                "/v61.0/sobjects/User");
+        testContext.API().response = testContext.API().requestSpecification
+                .get();
+        JsonPath jsonPath = testContext.API().response.jsonPath();
+        return jsonPath.getList("recentItems", User.class);
+    }
+
+    public User getUserById(String Id) {
+        testContext.API().requestSpecification.basePath("/services/data" +
+                "/v61.0/sobjects/User/" + Id);
+        testContext.API().response = testContext.API().requestSpecification
+                .get();
+        JsonPath jsonPath = testContext.API().response.jsonPath();
+        return jsonPath.getObject("", User.class);
     }
 }

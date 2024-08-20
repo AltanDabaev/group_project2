@@ -6,6 +6,7 @@ import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebDriver;
 import pages.*;
 import pojo.Account;
+import pojo.User;
 import utils.BrowserUtils;
 
 import java.util.ArrayList;
@@ -81,7 +82,9 @@ public class TestContext {
         public Response response;
         public ApiUtils ApiUtils;
         public Account account;
+        public User user;
         public List<Account> accounts;
+        public List<User> users;
 
         public API(TestContext testContext) {
             ApiUtils = new ApiUtils(testContext);

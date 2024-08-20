@@ -11,4 +11,4 @@ Feature: Accounts test
   @US-11
   Scenario: Verify admin can get a single Account object with GET call
     When I send a get request to "/services/data/v61.0/sobjects/Account/{id}" with Id "001Hu000034km0YIAQ"
-    Then I should receive one Account object
+    Then I should receive one "Account" object
