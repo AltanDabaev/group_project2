@@ -13,21 +13,6 @@ public class AppLauncherSteps {
         this.testContext = testContext;
     }
 
-    @When("I click {string} button")
-    public void i_click_button(String button) {
-        switch (button.toLowerCase()) {
-            case "app launcher":
-                testContext.UI().getAppLauncherPage().appLauncherBtn.click();
-                break;
-            case "view all":
-                testContext.UI().getAppLauncherPage().viewAllLaunchBtn.click();
-                break;
-            default:
-                Assert.fail();
-        }
-
-    }
-
     @Then("Verify {string} option is visible")
     public void verify_option_is_visible(String option) {
         switch (option.toLowerCase()) {
