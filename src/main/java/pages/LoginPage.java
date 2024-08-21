@@ -9,7 +9,8 @@ import utils.ConfigReader;
 
 public class LoginPage {
 
-    public LoginPage(WebDriver driver){PageFactory.initElements(driver, this);}
+    public LoginPage(WebDriver driver){
+        PageFactory.initElements(driver, this);}
 
     @FindBy(id = "username")
     public WebElement usernameField;

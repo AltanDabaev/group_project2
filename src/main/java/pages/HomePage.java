@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.ConfigReader;
 
-public class HomePage {  private WebDriver driver;
+public class HomePage {
+
 
     public HomePage(WebDriver driver){
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
     @FindBy(xpath = "//button[@title='App Launcher']")
