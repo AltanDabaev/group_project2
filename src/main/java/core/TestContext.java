@@ -6,9 +6,11 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebDriver;
 import pages.*;
+import pojo.Account;
+import pojo.User;
 import utils.BrowserUtils;
-import utils.ApiUtils;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import utils.ApiUtils;
 
@@ -41,6 +43,8 @@ public class TestContext {
         private final OppPage oppPage;
         private final SetupPage setupPage;
         private final AccountPage accountPage;
+        private  final AppLauncherPage appLauncherPage;
+
 
         public UI(){
             this.driver = new Driver().initializeDriver("chrome");
@@ -50,6 +54,7 @@ public class TestContext {
             this.accountPage = new AccountPage(driver);
             this.oppPage = new OppPage(driver);
             this.setupPage = new SetupPage(driver);
+            this.appLauncherPage=new AppLauncherPage(driver);
 
         }
 
@@ -71,13 +76,20 @@ public class TestContext {
 
         public AccountPage getAccountPage(){return this.accountPage;}
         public OppPage getOppPage(){return this.oppPage;}
-        public SetupPage setupPage(){return this.setupPage;}
+        public SetupPage getSetupPage(){return this.setupPage;}
+        public AppLauncherPage getAppLauncherPage() {
+            return this.appLauncherPage;
+        }
     }
 
     public class API {
         public RequestSpecification requestSpecification;
         public Response response;
         public ApiUtils ApiUtils;
+        public Account account;
+        public User user;
+        public List<Account> accounts;
+        public List<User> users;
 
         public API(TestContext testContext) {
             ApiUtils = new ApiUtils(testContext);

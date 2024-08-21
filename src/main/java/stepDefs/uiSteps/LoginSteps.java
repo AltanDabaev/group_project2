@@ -1,6 +1,7 @@
 package stepDefs.uiSteps;
 
 import core.TestContext;
+import io.cucumber.java.en.Given;
 
 public class LoginSteps {
 
