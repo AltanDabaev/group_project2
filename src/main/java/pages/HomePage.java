@@ -20,5 +20,8 @@ public class HomePage {
     @FindBy(xpath = "//button[text()='Visit AppExchange']")
     public WebElement appExchangeBtn;
 
+    @FindBy(xpath = "//a[@title='Accounts']/parent::one-app-nav-bar-item-root")
+    public WebElement accountsNavBtn;
+
 
 }
