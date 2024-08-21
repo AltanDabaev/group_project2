@@ -1,4 +1,7 @@
+
+
 Feature: Account page tests
+  @US7
   Scenario: Navigate to Accounts page
     Given I login to salesforce app
     When I click "App Launcher" button
