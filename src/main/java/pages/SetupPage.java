@@ -15,4 +15,6 @@ public class SetupPage {
     @FindBy(xpath = "//a[@class='setupLink']")
     public List<WebElement> mostRecentlyUsed;
 
+
+
 }
