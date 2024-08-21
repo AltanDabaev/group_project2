@@ -7,3 +7,7 @@ Feature: Setup page Tests
     Then Verify "Home" button is displayed
     Then Verify "Object Manager" button is displayed
 
+
+    @US-6
+    Scenario: Most Recently Used view
+      And  I should see max 10 items displayed under Most Recently Used section

@@ -23,4 +23,16 @@ public class HomePage {
     @FindBy(xpath = "//a[@title='Dashboards']/parent::one-app-nav-bar-item-root")
     public WebElement dashboardsNavBtn;
 
+    @FindBy(xpath = "//button[@title='App Launcher']")
+    public WebElement appLauncherBtn;
+    @FindBy(xpath = "//a[@data-label='Service']//p")
+    public WebElement serviceLaunchBtn;
+
+    @FindBy(xpath = "//button[text()='View All']")
+    public WebElement viewAllLaunchBtn;
+
+    @FindBy(xpath = "//button[text()='Visit AppExchange']")
+    public WebElement appExchangeBtn;
+
+
 }

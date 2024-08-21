@@ -8,11 +8,7 @@ import org.junit.Assert;
 public class LoginSteps {
 
     private final TestContext testContext;
-    public LoginSteps(TestContext testContext) {
-        this.testContext = testContext;
-    }
-
-
+    public LoginSteps(TestContext testContext) {this.testContext = testContext;}
     @Given("I login to salesforce app")
     public void i_login_to_salesforce_app() {
         testContext.UI().getLoginPage().loginAsAdmin();
@@ -23,9 +19,4 @@ public class LoginSteps {
         testContext.UI().getBrowserUtils().Waits.waitForTitleToContain("Home");
         Assert.assertTrue(testContext.UI().getDriver().getTitle().contains("Home"));
     }
-
-
-
-
-
 }
