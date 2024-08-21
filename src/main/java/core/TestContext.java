@@ -43,7 +43,7 @@ public class TestContext {
         private final OppPage oppPage;
         private final SetupPage setupPage;
         private final AccountPage accountPage;
-        private  final AppLauncherPage appLauncherPage;
+        private final AppLauncherPage appLauncherPage;
 
 
         public UI(){

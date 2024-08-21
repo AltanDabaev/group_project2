@@ -21,7 +21,6 @@ public class AppLauncherSteps {
                 break;
             case "view all":
                 testContext.UI().getAppLauncherPage().viewAllLaunchBtn.click();
-                ;
                 break;
             default:
                 Assert.fail();
