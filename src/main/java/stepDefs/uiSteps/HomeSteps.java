@@ -45,6 +45,12 @@ public class HomeSteps {
                 testContext.UI().getBrowserUtils().Waits.waitForElementToBeVisible(testContext.UI().getHomePage().viewAllLaunchBtn);
                 testContext.UI().getHomePage().viewAllLaunchBtn.click();
                 break;
+            case "service":
+                testContext.UI().getHomePage().serviceLaunchBtn.click();
+                break;
+            case "accounts":
+                testContext.UI().getHomePage().accountsNavBtn.click();
+                break;
     }
 
         }

@@ -13,10 +13,3 @@ Feature: Account page tests
     And I edit Accounts following fields:
       | accountName   | Aliia - Test   |
     Then Verify Account name is "Aliia - Test"
-
-
-
-
-
-
-

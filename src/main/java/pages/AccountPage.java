@@ -10,6 +10,8 @@ import org.w3c.dom.html.HTMLInputElement;
 
 import java.util.List;
 
+import java.util.List;
+
 public class AccountPage {
 
     public AccountPage(WebDriver driver){PageFactory.initElements(driver, this);}
@@ -44,4 +46,23 @@ public class AccountPage {
 
         saveBtn.click();
     }
+
+  @FindBy(xpath = "//th//a[@data-refid = 'recordId']")
+    public WebElement firstAccountOnTheList;
+
+    @FindBy(xpath = "//p[@title='Phone']")
+    public WebElement headerPhone;
+
+    @FindBy(xpath = "//p[@title='Website']")
+    public WebElement headerWebsite;
+
+    @FindBy(xpath = "//p[@title='Industry']")
+    public WebElement headerIndustry;
+
+    @FindBy(xpath = "//p[@title='Type']")
+    public WebElement headerType;
+
+    @FindBy(xpath = "//p[@title='Account Owner']")
+    public WebElement headerAccountOwner;
+
 }
