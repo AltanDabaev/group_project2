@@ -11,6 +11,30 @@ public class HomeSteps {
 
     public HomeSteps(TestContext testContext) {this.testContext = testContext;}
 
+    @Then("Verify {string} navigation button is visible")
+    public void verifyNavigationButtonIsVisible(String button) {
+        switch (button.toLowerCase()) {
+            case "accounts":
+                Assert.assertTrue(testContext.UI().getHomePage().accountsNavBtn.isDisplayed());
+                break;
+            case "contacts":
+                Assert.assertTrue(testContext.UI().getHomePage().contactsNavBtn.isDisplayed());
+                break;
+            case "cases":
+                Assert.assertTrue(testContext.UI().getHomePage().casesNavBtn.isDisplayed());
+                break;
+            case "reports":
+                Assert.assertTrue(testContext.UI().getHomePage().reportsNavBtn.isDisplayed());
+                break;
+            case "dashboards":
+                Assert.assertTrue(testContext.UI().getHomePage().dashboardsNavBtn.isDisplayed());
+                break;
+
+            default:
+                Assert.fail(button + " navigation button was not found");
+        }
+    }
+
     @When("I click {string} button")
     public void i_click_button(String button) {
         switch (button.toLowerCase()) {

@@ -76,8 +76,9 @@ public class TestContext {
 
         public AccountPage getAccountPage(){return this.accountPage;}
         public OppPage getOppPage(){return this.oppPage;}
-        public SetupPage getSetupPage(){return this.setupPage;}
-    }
+        public SetupPage getSetupPage() {
+            return this.setupPage;
+        }
 
     public class API {
         public RequestSpecification requestSpecification;
