@@ -1,6 +1,7 @@
 package core;
 
 import io.cucumber.java.Scenario;
+
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebDriver;
@@ -8,8 +9,6 @@ import pages.*;
 import pojo.Account;
 import pojo.User;
 import utils.BrowserUtils;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +45,8 @@ public class TestContext {
         private final OppPage oppPage;
         private final SetupPage setupPage;
         private final AccountPage accountPage;
+        private final AppLauncherPage appLauncherPage;
+
 
         public UI(){
             this.driver = new Driver().initializeDriver("chrome");
@@ -55,6 +56,7 @@ public class TestContext {
             this.accountPage = new AccountPage(driver);
             this.oppPage = new OppPage(driver);
             this.setupPage = new SetupPage(driver);
+            this.appLauncherPage=new AppLauncherPage(driver);
 
         }
 
@@ -77,6 +79,9 @@ public class TestContext {
         public AccountPage getAccountPage(){return this.accountPage;}
         public OppPage getOppPage(){return this.oppPage;}
         public SetupPage getSetupPage(){return this.setupPage;}
+        public AppLauncherPage getAppLauncherPage() {
+            return this.appLauncherPage;
+        }
     }
 
     public class API {
