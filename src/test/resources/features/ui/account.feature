@@ -15,6 +15,14 @@ Feature: Account page tests
       | Account Owner |
       | Industry      |
 
+  @US118
+  Scenario: Edit existing Account
+    And I click "first" item from recently view window
+    And I click edit "Details" button
+    And I edit Accounts following fields:
+      | accountName   | Aliia - Test   |
+    Then Verify Account name is "Aliia - Test"
+
   @US-17
   Scenario: Verify user can create account
     When I create a new Account with following fields populated:
