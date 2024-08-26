@@ -14,3 +14,11 @@ Feature: Account page tests
       | Website       |
       | Account Owner |
       | Industry      |
+
+  @US-17
+  Scenario: Verify user can create account
+    When I create a new Account with following fields populated:
+      | Account Number | 112233445                 |
+      | Account Name   | Account - {current_time} |
+      | Type           | Prospect                  |
+    Then Verify Account header has given Account name

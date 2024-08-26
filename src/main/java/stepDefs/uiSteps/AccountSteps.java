@@ -2,10 +2,11 @@ package stepDefs.uiSteps;
 
 import core.TestContext;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
-
-
 import java.util.List;
+import java.util.Map;
 
 public class AccountSteps {
     private final TestContext testContext;
@@ -38,5 +39,24 @@ public class AccountSteps {
 
 
        }
+
+    @When("I create a new Account with following fields populated:")
+    public void iCreateANewAccountWithFollowingFieldsPopulated(Map<String, String> map) {
+            testContext.UI().getAccountPage().newlyCreatedAccountName = map.get("Account Name").replace("{current_time}",
+                    testContext.UI().getBrowserUtils().getLogTime());
+            testContext.UI().getAccountPage().createNewAccount(
+                    map.get("Account Name").replace("{current_time}",
+                            testContext.UI().getBrowserUtils().getLogTime()),
+                    map.get("Account Number"),
+                    map.get("Type")
+            );
+        }
+
+    @Then("Verify Account header has given Account name")
+    public void verifyAccountHeaderHasGivenAccountName() {
+        Assert.assertEquals(testContext.UI().getAccountPage().newlyCreatedAccountName,
+                testContext.UI().getAccountPage().accountHeaderText.getText());
     }
+}
+
 
