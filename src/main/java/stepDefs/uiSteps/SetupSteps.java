@@ -40,9 +40,10 @@ public class SetupSteps {
             default:
                 Assert.fail();
         }
+    }
     @And("I should see max {int} items displayed under Most Recently Used section")
     public void i_should_see_max_items_displayed_under_most_recently_used_section(int number) {
-        Assert.assertTrue(testContext.UI().getSetupPage().mostRecentlyUsed.size() <= 10);
+        Assert.assertTrue(testContext.UI().getSetupPage().mostRecentlyUsed.size() <= number);
     }
 
 }
