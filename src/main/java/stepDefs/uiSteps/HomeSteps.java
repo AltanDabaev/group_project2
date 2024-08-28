@@ -7,9 +7,33 @@ import org.junit.Assert;
 
 public class HomeSteps {
 
-    private TestContext testContext;
+    private final TestContext testContext;
 
     public HomeSteps(TestContext testContext) {this.testContext = testContext;}
+
+    @Then("Verify {string} navigation button is visible")
+    public void verifyNavigationButtonIsVisible(String button) {
+        switch (button.toLowerCase()) {
+            case "accounts":
+                Assert.assertTrue(testContext.UI().getHomePage().accountsNavBtn.isDisplayed());
+                break;
+            case "contacts":
+                Assert.assertTrue(testContext.UI().getHomePage().contactsNavBtn.isDisplayed());
+                break;
+            case "cases":
+                Assert.assertTrue(testContext.UI().getHomePage().casesNavBtn.isDisplayed());
+                break;
+            case "reports":
+                Assert.assertTrue(testContext.UI().getHomePage().reportsNavBtn.isDisplayed());
+                break;
+            case "dashboards":
+                Assert.assertTrue(testContext.UI().getHomePage().dashboardsNavBtn.isDisplayed());
+                break;
+
+            default:
+                Assert.fail(button + " navigation button was not found");
+        }
+    }
 
     @Then("Verify URL is ending with {string}")
     public void verify_url_is_ending_with(String url) {
@@ -22,13 +46,12 @@ public class HomeSteps {
             case "app launcher":
                 testContext.UI().getHomePage().appLauncherBtn.click();
                 break;
-            case "service":
-                testContext.UI().getHomePage().serviceLaunchBtn.click();
-                testContext.UI().getBrowserUtils().Waits.waitForURLToContainText("page/home");
-                break;
             case "view all":
                 testContext.UI().getBrowserUtils().Waits.waitForElementToBeVisible(testContext.UI().getHomePage().viewAllLaunchBtn);
                 testContext.UI().getHomePage().viewAllLaunchBtn.click();
+                break;
+            case "service":
+                testContext.UI().getHomePage().serviceLaunchBtn.click();
                 break;
             case "accounts":
                 testContext.UI().getHomePage().accountsNavBtn.click();
