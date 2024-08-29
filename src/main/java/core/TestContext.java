@@ -38,7 +38,7 @@ public class TestContext {
 
 
 
-    public class UI {
+    public class UI{
         private final WebDriver driver;
         private final BrowserUtils browserUtils;
         private final LoginPage loginPage;
@@ -74,18 +74,13 @@ public class TestContext {
             return this.homePage;
         }
 
-        public AccountPage getAccountPage() {
-            return this.accountPage;
-        }
+        public AccountPage getAccountPage() {return this.accountPage;}
 
-        public OppPage getOppPage() {
-            return this.oppPage;
-        }
+        public OppPage getOppPage() {return this.oppPage;}
 
         public SetupPage getSetupPage() {
             return this.setupPage;
-        }
-    }
+        }}
 
         public class API {
             public RequestSpecification requestSpecification;

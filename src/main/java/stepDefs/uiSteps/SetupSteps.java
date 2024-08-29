@@ -21,17 +21,30 @@ public class SetupSteps {
                 testContext.UI().getBrowserUtils().logLocator(testContext.scenario,
                         testContext.UI().getSetupPage().appLauncherBtn);
                 testContext.UI().getSetupPage().appLauncherBtn.click();
+                testContext.UI().getBrowserUtils().captureScreenshot(testContext.UI().getDriver(),
+                        testContext.scenario);
                 break;
             case "service":
                 testContext.UI().getBrowserUtils().logLocator(testContext.scenario,
                         testContext.UI().getSetupPage().serviceLaunchBtn);
                 testContext.UI().getSetupPage().serviceLaunchBtn.click();
                 testContext.UI().getBrowserUtils().Waits.waitForURLToContainText("page/home");
+                testContext.UI().getBrowserUtils().captureScreenshot(testContext.UI().getDriver(),
+                        testContext.scenario);
                 break;
             case "accounts":
                 testContext.UI().getBrowserUtils().logLocator(testContext.scenario,
                         testContext.UI().getHomePage().accountsNavBtn);
                         testContext.UI().getHomePage().accountsNavBtn.click();
+                testContext.UI().getBrowserUtils().captureScreenshot(testContext.UI().getDriver(),
+                        testContext.scenario);
+                break;
+            case "view all":
+                testContext.UI().getBrowserUtils().Waits.waitForElementToBeVisible(
+                        testContext.UI().getHomePage().viewAllLaunchBtn);
+                testContext.UI().getHomePage().viewAllLaunchBtn.click();
+                testContext.UI().getBrowserUtils().captureScreenshot(testContext.UI().getDriver(),
+                        testContext.scenario);
                 break;
             default: Assert.fail();
         }
