@@ -91,6 +91,9 @@ public class AccountSteps {
     public void verifyAccountHeaderHasGivenAccountName() {
         Assert.assertEquals(testContext.UI().getAccountPage().newlyCreatedAccountName,
                 testContext.UI().getAccountPage().accountHeaderText.getText());
+        testContext.UI().getBrowserUtils().captureScreenshot(testContext.UI().getDriver(), testContext.scenario);
+        testContext.UI().getBrowserUtils().logTestDataAndLocator(testContext.scenario,
+                testContext.UI().getAccountPage().accountHeaderText, testContext.UI().getAccountPage().newlyCreatedAccountName);
     }
 }
 

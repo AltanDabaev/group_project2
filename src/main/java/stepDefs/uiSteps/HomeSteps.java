@@ -40,27 +40,6 @@ public class HomeSteps {
         Assert.assertTrue(testContext.UI().getDriver().getCurrentUrl().endsWith(url));
     }
 
-    @When("I click {string} button")
-    public void i_click_button(String button) {
-        switch (button.toLowerCase()) {
-            case "app launcher":
-                testContext.UI().getHomePage().appLauncherBtn.click();
-                break;
-            case "view all":
-                testContext.UI().getBrowserUtils().Waits.waitForElementToBeVisible(testContext.UI().getHomePage().viewAllLaunchBtn);
-                testContext.UI().getHomePage().viewAllLaunchBtn.click();
-                break;
-            case "service":
-                testContext.UI().getHomePage().serviceLaunchBtn.click();
-                break;
-            case "accounts":
-                testContext.UI().getHomePage().accountsNavBtn.click();
-                break;
-            default: Assert.fail();
-    }
-
-        }
-
     @Then("Verify AppExchange is clicable")
     public void verifyAppExchangeIsClicable() {
         Assert.assertTrue(testContext.UI().getHomePage().appExchangeBtn.isEnabled());

@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -209,5 +210,130 @@ public class BrowserUtils {
         scenario.attach(htmlContent.getBytes(), "text/html", getLogTime() + "  FAIL: " + scenario.getName());
     }
 
+    public static void logStepDetails(By locator, String testData) {
 
+        if (locator != null) {
+            System.out.println("Locator: " + locator.toString());
+        }
+        if (testData != null) {
+            System.out.println("Test Data: " + testData);
+        }
+    }
+
+    public void captureScreenshot(WebDriver driver, Scenario scenario) {
+        try {
+            if (ConfigReader.readProperty("takeScreenshot").equals("true")) {
+                final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "image/png", "Screenshot");
+            }
+        } catch (Exception e) {
+            System.out.println("Exception while taking screenshot: " + e.getMessage());
+        }
+    }
+
+    public void logLocator(Scenario scenario, WebElement element) {
+        StringBuilder logMessage = new StringBuilder();
+        By by = getByFromElement(element);
+        logMessage.append("Locator: ").append(by).append("\n");
+        scenario.attach(logMessage.toString().getBytes(), "text/plain", "Locator");
+    }
+    public void logLocator(Scenario scenario, List<WebElement> elements) {
+        StringBuilder logMessage = new StringBuilder();
+        By by = getByFromElement(elements);
+        logMessage.append("Locator: ").append(by).append("\n");
+        scenario.attach(logMessage.toString().getBytes(), "text/plain", "Locator");
+    }
+
+    public void logTestDataAndLocator(Scenario scenario, WebElement element, String testData) {
+        StringBuilder logMessage = new StringBuilder();
+        By by = getByFromElement(element);
+        logMessage.append("Locator: ").append(by).append("\n");
+        logMessage.append("Test Data: ").append(testData).append("\n");
+        scenario.attach(logMessage.toString().getBytes(), "text/plain", "Locator and Test Data");
+    }
+
+    public By getByFromElement(WebElement element) {
+        By by;
+        //[[ChromeDriver: chrome on XP (d85e7e220b2ec51b7faf42210816285e)] -> xpath: //input[@title='Search']]
+        String[] pathVariables = (element.toString().split("->")[1].
+                replaceFirst("(?s)(.*)\\]", "$1" + "")).split(":");
+
+        String selector = pathVariables[0].trim();
+        String value = pathVariables[1].trim();
+
+        switch (selector) {
+            case "id":
+                by = By.id(value);
+                break;
+            case "className":
+                by = By.className(value);
+                break;
+            case "tagName":
+                by = By.tagName(value);
+                break;
+            case "xpath":
+                by = By.xpath(value);
+                break;
+            case "cssSelector":
+                by = By.cssSelector(value);
+                break;
+            case "linkText":
+                by = By.linkText(value);
+                break;
+            case "name":
+                by = By.name(value);
+                break;
+            case "partialLinkText":
+                by = By.partialLinkText(value);
+                break;
+            default:
+                throw new IllegalStateException("locator : " + selector + " not found!!!");
+        }
+        return by;
+    }
+    public By getByFromElement(List<WebElement> elements) {
+        By by;
+        String elementDescription = elements.get(0).toString();
+
+        try {
+            String[] pathVariables = (elementDescription.split("->")[1].replaceFirst("(?s)(.*)\\]", "$1")).split(":");
+
+            String selector = pathVariables[0].trim();
+            String value = pathVariables[1].trim();
+
+            switch (selector) {
+                case "id":
+                    by = By.id(value);
+                    break;
+                case "className":
+                    by = By.className(value);
+                    break;
+                case "tagName":
+                    by = By.tagName(value);
+                    break;
+                case "xpath":
+                    by = By.xpath(value);
+                    break;
+                case "css selector":
+                    by = By.cssSelector(value);
+                    break;
+                case "linkText":
+                    by = By.linkText(value);
+                    break;
+                case "name":
+                    by = By.name(value);
+                    break;
+                case "partial link text":
+                    by = By.partialLinkText(value);
+                    break;
+                default:
+                    throw new IllegalStateException("Locator type '" + selector + "' not recognized.");
+            }
+        } catch (Exception e) {
+            throw new IllegalStateException("Unable to parse WebElement's locator from its string representation: " + elementDescription, e);
+        }
+
+        return by;
+    }
 }
+

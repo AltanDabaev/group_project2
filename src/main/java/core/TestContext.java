@@ -8,8 +8,6 @@ import pages.*;
 import pojo.Account;
 import pojo.User;
 import utils.BrowserUtils;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,13 +27,14 @@ public class TestContext {
         sharedData = new HashMap<>();
         e = new Exception();
     }
+
     public UI UI() {
         return this.UI;
     }
+
     public API API() {
         return this.API;
     }
-
 
 
     public class UI {
@@ -47,7 +46,7 @@ public class TestContext {
         private final SetupPage setupPage;
         private final AccountPage accountPage;
 
-        public UI(){
+        public UI() {
             this.driver = new Driver().initializeDriver("chrome");
             this.browserUtils = new BrowserUtils(driver);
             this.loginPage = new LoginPage(driver);
@@ -74,11 +73,19 @@ public class TestContext {
             return this.homePage;
         }
 
-        public AccountPage getAccountPage(){return this.accountPage;}
-        public OppPage getOppPage(){return this.oppPage;}
+        public AccountPage getAccountPage() {
+            return this.accountPage;
+        }
+
+        public OppPage getOppPage() {
+            return this.oppPage;
+        }
+
         public SetupPage getSetupPage() {
             return this.setupPage;
         }
+    }
+
 
     public class API {
         public RequestSpecification requestSpecification;
