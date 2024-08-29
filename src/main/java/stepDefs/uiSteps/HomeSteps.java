@@ -35,6 +35,11 @@ public class HomeSteps {
         }
     }
 
+    @Then("Verify URL is ending with {string}")
+    public void verify_url_is_ending_with(String url) {
+        Assert.assertTrue(testContext.UI().getDriver().getCurrentUrl().endsWith(url));
+    }
+
     @When("I click {string} button")
     public void i_click_button(String button) {
         switch (button.toLowerCase()) {
@@ -51,6 +56,7 @@ public class HomeSteps {
             case "accounts":
                 testContext.UI().getHomePage().accountsNavBtn.click();
                 break;
+            default: Assert.fail();
     }
 
         }

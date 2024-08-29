@@ -34,4 +34,6 @@ public class HomePage {
     @FindBy(xpath = "//button[text()='Visit AppExchange']")
     public WebElement appExchangeBtn;
 
+
+
 }
