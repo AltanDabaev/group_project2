@@ -7,7 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 
-    public HomePage(WebDriver driver){PageFactory.initElements(driver, this);}
+    public HomePage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(xpath = "//a[@title='Accounts']/parent::one-app-nav-bar-item-root")
     public WebElement accountsNavBtn;
 
@@ -33,7 +36,6 @@ public class HomePage {
 
     @FindBy(xpath = "//button[text()='Visit AppExchange']")
     public WebElement appExchangeBtn;
-
 
 
 }

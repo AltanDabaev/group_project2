@@ -38,7 +38,9 @@ public class AccountSteps {
     @And("I edit Accounts following fields:")
     public void iEditAccountsFollowingFields(Map<String, String> map) {
         testContext.UI().getAccountPage().editAccountDetails(
-                map.get("accountName"));
+                map.get("accountName")
+        );
+        testContext.UI().getBrowserUtils().sleep(2000);
     }
 
     @Then("Verify Account name is {string}")
