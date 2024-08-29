@@ -47,7 +47,7 @@ public class TestContext {
         private final SetupPage setupPage;
         private final AccountPage accountPage;
 
-        public UI(){
+        public UI() {
             this.driver = new Driver().initializeDriver("chrome");
             this.browserUtils = new BrowserUtils(driver);
             this.loginPage = new LoginPage(driver);
@@ -74,23 +74,30 @@ public class TestContext {
             return this.homePage;
         }
 
-        public AccountPage getAccountPage(){return this.accountPage;}
-        public OppPage getOppPage(){return this.oppPage;}
+        public AccountPage getAccountPage() {
+            return this.accountPage;
+        }
+
+        public OppPage getOppPage() {
+            return this.oppPage;
+        }
+
         public SetupPage getSetupPage() {
             return this.setupPage;
         }
+    }
 
-    public class API {
-        public RequestSpecification requestSpecification;
-        public Response response;
-        public ApiUtils ApiUtils;
-        public Account account;
-        public User user;
-        public List<Account> accounts;
-        public List<User> users;
+        public class API {
+            public RequestSpecification requestSpecification;
+            public Response response;
+            public ApiUtils ApiUtils;
+            public Account account;
+            public User user;
+            public List<Account> accounts;
+            public List<User> users;
 
-        public API(TestContext testContext) {
-            ApiUtils = new ApiUtils(testContext);
+            public API(TestContext testContext) {
+                ApiUtils = new ApiUtils(testContext);
+            }
         }
     }
-}

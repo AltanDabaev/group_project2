@@ -38,9 +38,7 @@ public class AccountSteps {
     @And("I edit Accounts following fields:")
     public void iEditAccountsFollowingFields(Map<String, String> map) {
         testContext.UI().getAccountPage().editAccountDetails(
-                map.get("accountName")
-        );
-        testContext.UI().getBrowserUtils().sleep(2000);
+                map.get("accountName"));
     }
 
     @Then("Verify Account name is {string}")
@@ -91,6 +89,9 @@ public class AccountSteps {
     public void verifyAccountHeaderHasGivenAccountName() {
         Assert.assertEquals(testContext.UI().getAccountPage().newlyCreatedAccountName,
                 testContext.UI().getAccountPage().accountHeaderText.getText());
+        testContext.UI().getBrowserUtils().captureScreenshot(testContext.UI().getDriver(), testContext.scenario);
+        testContext.UI().getBrowserUtils().logTestDataAndLocator(testContext.scenario,
+                testContext.UI().getAccountPage().accountHeaderText, testContext.UI().getAccountPage().newlyCreatedAccountName);
     }
 }
 

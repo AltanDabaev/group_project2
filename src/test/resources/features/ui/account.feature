@@ -6,7 +6,7 @@ Feature: Account page tests
     And I click "Service" button
     And I click "Accounts" button
 
-  @US-16
+  @US-16 @UI
   Scenario: Verify 1 Account has 5 headers displayed.
     And I click each account and verify the following headers are present:
       | Type          |
